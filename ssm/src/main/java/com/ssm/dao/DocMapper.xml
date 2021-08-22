@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.DocMapper">
+    <insert id="addDoc" parameterType="Doc" useGeneratedKeys="true" keyProperty="docID">
+        insert into doc(docId, docName, docPath, docDescribe, userName, date)
+        values (#{docID}, #{docName}, #{docPath}, #{docDescribe}, #{userName}, #{date});
+    </insert>
+    
+    <delete id="deleteDocByID" parameterType="int">
+        delete from doc where docID = #{docID};
+    </delete>
+
+    <update id="updateDoc"  parameterType="Doc">
+        update doc
+        set docDescribe = #{docDescribe}, docPath = #{docPath}, docDescribe = #{docDescribe}, userName = #{userName},
+            date = #{date}
+        where docID = #{docID};
+    </update>
+
+    <select id="queryDocByID" resultType="Doc">
+        select * from doc where docId = #{docID}
+    </select>
+
+    <select id="queryAllDoc" resultType="Doc">
+        select * from doc
+    </select>
+</mapper>
